@@ -1,3 +1,13 @@
+# Neovim Config
+
+Uses `vim-plug`
+
+## Usage
+
+```bash
+$ nvim +PlugInstall
+```
+
 ```bash
 nvim
 ├── README.md

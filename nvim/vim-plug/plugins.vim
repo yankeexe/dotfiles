@@ -1,8 +1,9 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
+	Plug 'psf/black', { 'tag': '19.10b0' }
+	Plug 'nlknguyen/papercolor-theme'
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 	Plug 'kien/ctrlp.vim'
 	Plug 'voldikss/vim-floaterm'
-	Plug 'prettier/vim-prettier', { 'do': 'npm install'  }
 	Plug 'scrooloose/nerdtree'
 	Plug 'yggdroot/indentline'
 	Plug 'mattn/emmet-vim'
@@ -22,8 +23,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'ap/vim-css-color'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'alvan/vim-closetag'
-	Plug 'psf/black', { 'branch': 'stable'  }
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }, 'for': ['markdown', 'vim-plug'] }
+	Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+	Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
+
 call plug#end()
 
 

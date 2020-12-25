@@ -1,7 +1,10 @@
 " Set number
 set number
-
+let g:python3_host_prog = "/usr/bin/python3.8"
 syntax on
+
+" zoom features
+nnoremap <silent> <C-w>w :tab split<CR>
 
 "map backspace work properly 
 set backspace=indent,eol,start
@@ -34,4 +37,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+autocmd FileType python let b:coc_root_patterns = ['venv']
 

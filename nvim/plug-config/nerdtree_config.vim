@@ -10,4 +10,9 @@ nmap <silent> <C-b> :NERDTreeToggle<CR>
 nnoremap <leader>r :NERDTreeFind<CR>
 nmap ,n :NERDTreeFind<CR>
 
+" Show hidden files by default.
+let NERDTreeShowHidden=1
+
+" Mirror NERDTree on every new tab
+"autocmd BufWinEnter * NERDTreeMirror
 

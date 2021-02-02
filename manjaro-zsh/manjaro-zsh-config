@@ -58,6 +58,9 @@ alias cp="cp -i"                                                # Confirm before
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
 alias gitu='git add . && git commit && git push'
+alias mp="multipass"
+alias install="pacman -S"
+alias instally="yay -S"
 
 # Theming section  
 autoload -U compinit colors zcalc
@@ -82,6 +85,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 # z jump directories
 source /usr/share/zsh/plugins/z/z.plugin.zsh
+# git aliases
+source /usr/share/zsh/plugins/git/git.plugin.zsh
 # bind UP and DOWN arrow keys to history substring search
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -194,3 +199,6 @@ function mzc_termsupport_preexec {
 autoload -U add-zsh-hook
 add-zsh-hook precmd mzc_termsupport_precmd
 add-zsh-hook preexec mzc_termsupport_preexec
+
+# PATH export for arkade binaries
+export PATH=$PATH:$HOME/.arkade/bin/

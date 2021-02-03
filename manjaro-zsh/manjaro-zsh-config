@@ -61,6 +61,13 @@ alias gitu='git add . && git commit && git push'
 alias mp="multipass"
 alias install="pacman -S"
 alias instally="yay -S"
+alias xo="xdg-open ."
+alias py=python3.8
+alias va='source venv/bin/activate'
+alias vd=deactivate
+alias vm='py -m venv venv'
+alias vr='rm -rf venv'
+alias k='kubectl'
 
 # Theming section  
 autoload -U compinit colors zcalc

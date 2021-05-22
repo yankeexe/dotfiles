@@ -4,14 +4,16 @@ dotfiles for stuffs.
 
 ## Usage
 
+### Restore to local machine
 Download the config files
-
-## Sync using Rsync
-
 ```bash
 $ rsync -avu --progress <config-folder> <your-config-folder>
 ```
 
+### Sync new changes from local to this repository
+```bash
+$ rsync -av --progress <local-config-files-or-dir> <path-to-repo>
+```
 ---
 
 ## Directory Overview

@@ -1,0 +1,9 @@
+package bass
+package foreign-env
+package https://github.com/danhper/fish-ssh-agent
+package https://github.com/jethrokuan/fzf
+package https://github.com/jhillyerd/plugin-git
+package nvm
+package z
+theme clearance
+theme default

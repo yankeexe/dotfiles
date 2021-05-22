@@ -37,3 +37,5 @@ else
         start_agent
     end  
 end
+
+set -gx FZF_DEFAULT_COMMAND 'rg --files --no-hidden'

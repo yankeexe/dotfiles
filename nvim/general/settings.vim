@@ -1,12 +1,19 @@
-" Set number
+" Add leader key
+let mapleader=","
+
+" Auto format Rust files on save.
+let g:rustfmt_autosave = 1
+
+" Show line numbers
 set number
+
 let g:python3_host_prog = "/usr/bin/python3.8"
 syntax on
 
-" zoom features
+" Open split on a new tab.
 nnoremap <silent> <C-w>w :tab split<CR>
 
-"map backspace work properly 
+"Map backspace work properly 
 set backspace=indent,eol,start
 
 filetype plugin indent on
@@ -16,9 +23,14 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 set laststatus=2
 
-" Add leader key
-let mapleader=","
 
+" Open terminal as vertical split on the right side.
+set splitright 
+nnoremap <leader>t :vsp <CR> :term <CR>
+
+" Convert buffers to tab
+nnoremap <leader>b :tab ball <CR>
+"
 " No swap file
 set noswapfile
 

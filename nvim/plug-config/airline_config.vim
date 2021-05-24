@@ -11,6 +11,6 @@ let g:airline#extensions#tabline#alt_sep = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 
-let g:airline#extensions#tabline#fnamemod = ':t' " Only display filename on tab.
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#show_splits = 0

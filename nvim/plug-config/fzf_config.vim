@@ -1,5 +1,5 @@
 " Use ripgrep for file searches.
-let FZF_DEFAULT_COMMAND = 'rg --files --no-hidden'
+let FZF_DEFAULT_COMMAND = 'rg --files'
 
 " Search for files.
 nnoremap <C-p> :Files<CR>

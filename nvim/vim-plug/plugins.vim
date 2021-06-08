@@ -1,4 +1,6 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
+        Plug 'ptzz/lf.vim'
+	Plug 'arzg/vim-colors-xcode'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'airblade/vim-rooter'
@@ -60,4 +62,4 @@ endif
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+"autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')

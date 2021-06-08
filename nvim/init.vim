@@ -4,8 +4,9 @@ source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/terminal_mouse_scroll.vim
 
 " Plugin Configurations
-source $HOME/.config/nvim/plug-config/nerdtree_config.vim
+"source $HOME/.config/nvim/plug-config/nerdtree_config.vim
 source $HOME/.config/nvim/plug-config/coc_config.vim
+source $HOME/.config/nvim/plug-config/lf_config.vim
 source $HOME/.config/nvim/plug-config/airline_config.vim
 source $HOME/.config/nvim/plug-config/codivim_config.vim
 source $HOME/.config/nvim/plug-config/floaterm_config.vim

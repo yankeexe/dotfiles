@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
+	Plug 'APZelos/blamer.nvim'
         Plug 'ptzz/lf.vim'
 	Plug 'arzg/vim-colors-xcode'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

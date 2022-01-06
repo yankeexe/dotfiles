@@ -27,6 +27,7 @@ alias rx='redshift -x'
 alias ys="yarn start"
 alias ybs="yarn build && yarn start"
 
+
 #Copy current path to the clipboard
 alias ccp="pwd | xclip -selection clipboard" 
 #export DOCKER_HOST=tcp://localhost:2375
@@ -38,7 +39,36 @@ alias vm='py -m venv venv'
 alias vr='rm -rf venv'
 alias k='kubectl'
 alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
+alias zr="source ~/.zshrc"
+
 export NVM_DIR="$HOME/.nvm"
+export PYTHONDONTWRITEBYTECODE=1
+
+
+# FUNCTION ALIASES
+kapply(){
+	kubectl apply -f $1 -n $2
+}
+
+de(){
+	docker exec -it $1 bash
+}
+
+
+drm(){
+	docker stop $1 && docker rm $1
+}
+
+gbin(){
+	CGO_ENABLED=0 GOOS=$1 GOARCH=$2 go build -ldflags "-s -w" -a -installsuffix cgo -o bin/$3
+}
+
+
+# GLOBAL ALIASES
+alias -g L="| less"
+alias -g J="| jq"
+alias -g H="--help"
+
 
 #Lazyload Node.js - NVM and npm
 lazynvm() {

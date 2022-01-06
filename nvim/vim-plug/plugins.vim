@@ -24,8 +24,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'mattn/emmet-vim'
 	Plug 'psf/black', { 'tag': '19.10b0' }
 	Plug 'rust-lang/rust.vim'
+	Plug 'metakirby5/codi.vim'
 
 	" Utils
+	Plug 'ntpeters/vim-better-whitespace'
         Plug 'ptzz/lf.vim'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'

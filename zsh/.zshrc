@@ -2,7 +2,7 @@
 export ZSH="/home/yankee/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="avit"
+ZSH_THEME="intheloop"
 
 plugins=(z git jump zsh-syntax-highlighting zsh-autosuggestions)
 

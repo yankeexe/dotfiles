@@ -6,9 +6,9 @@ local term_opts = { silent = true }
 local keymap = vim.keymap.set
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+keymap("", ";", "<Nop>", opts)
+vim.g.mapleader = ";"
+vim.g.maplocalleader = ";"
 
 -- Normal Mode
 -- Window Navigation
@@ -48,8 +48,9 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Telescope settings
-keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>")
+keymap("n", "<leader>p", "<cmd>Telescope find_files<CR>")
 keymap("n", "<leader>f", "<cmd>Telescope live_grep<CR>")
 keymap("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
 keymap("n", "<leader>d", "<cmd>Telescope diagnostics<CR>")
+keymap("n", "<leader>b", "<cmd>Telescope buffers<CR>")
 

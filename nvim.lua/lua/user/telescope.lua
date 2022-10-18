@@ -1,5 +1,6 @@
 require('telescope').setup{
   defaults = {
+    layout_config = {width=0.9},
     file_ignore_patterns = {"node_modules", "venv", "*."},
     -- Default configuration for telescope goes here:
     -- config_key = value,
@@ -8,7 +9,7 @@ require('telescope').setup{
         -- map actions.which_key to <C-h> (default: <C-/>)
         -- actions.which_key shows the mappings for your picker,
         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-        ["<C-h>"] = "which_key"
+        ["<C-i>"] = "which_key"
       }
     }
   },
@@ -20,6 +21,8 @@ require('telescope').setup{
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
+    find_files = {theme="ivy"},
+    diagnostics = {theme="dropdown", layout_config={width=0.9, height=0.3}}
   },
   extensions = {
     -- Your extension configuration goes here:

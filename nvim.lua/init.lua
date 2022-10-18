@@ -9,6 +9,8 @@ require "user.nvim-tree"
 require "user.toggleterm"
 require "user.telescope"
 require "user.comment"
+require "user.linters"
+
 
 -- Native LSP setup for Go
 -- require "lsp.config".gopls.setup{

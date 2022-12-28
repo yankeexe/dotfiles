@@ -6,7 +6,7 @@ Git configuration and custom commands
 
 Make the scripts executable:
 ```sh
-chmod +x commands/git-<command-name>.sh
+chmod +x commands/git-<command-name>
 ```
 
 Add them to your path

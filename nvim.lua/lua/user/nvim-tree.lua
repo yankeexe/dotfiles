@@ -110,7 +110,7 @@ require'nvim-tree'.setup {
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false, -- Show/Hide ignored files
     timeout = 400,
   },
   actions = {

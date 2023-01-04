@@ -29,7 +29,11 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
-keymap("n","<Space><Space>",":nohlsearch<Bar>:echo<CR>", opts)
+-- Remove highlights
+keymap("n", "<Space><Space>", ":nohlsearch<Bar>:echo<CR>", opts)
+
+-- Show symbols in the buffer
+keymap("n", "<leader>ss", "<cmd>SymbolsOutline<cr>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -55,4 +59,8 @@ keymap("n", "<leader>f", "<cmd>Telescope live_grep<CR>")
 keymap("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
 keymap("n", "<leader>d", "<cmd>Telescope diagnostics<CR>")
 keymap("n", "<leader>b", "<cmd>Telescope buffers<CR>")
+keymap("n", "gr", "<cmd>Telescope lsp_references<CR>")
 
+
+-- Terminal keymap
+keymap("t", "<esc>", [[<C-\><C-n>]], opts)

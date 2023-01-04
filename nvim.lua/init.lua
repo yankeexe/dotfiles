@@ -10,6 +10,7 @@ require "user.toggleterm"
 require "user.telescope"
 require "user.comment"
 require "user.linters"
+require "user.null-ls"
 
 
 -- Native LSP setup for Go

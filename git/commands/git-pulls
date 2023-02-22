@@ -1,0 +1,32 @@
+#!/bin/sh
+set -e
+
+CURRENT_BRANCH=$(git branch --show-current)
+CURRENT_REMOTE=$(git remote -v | awk '{print $1; exit}')
+
+
+help_message() {
+	echo "pulls lets you pull from your current working branch\n"
+	echo "Usage:"
+	echo "\tgit pulls"
+	echo "\tgit pulls --<flags>"
+    echo "\tgit pulls help or git pulls -h"
+}
+
+branch_info() {
+    echo Pulling from branch: "$CURRENT_BRANCH"
+    echo "---"
+}
+
+
+# Check argument exists
+if [ "$#" -ne 1 ]; then
+    branch_info
+    git pull "${CURRENT_REMOTE}" "${CURRENT_BRANCH}"
+elif [ "$1" = help ] || [ "$1" = "-h" ];then
+    help_message
+else
+    branch_info
+    # Allow flags in cmd
+   git pull "$@" "${CURRENT_REMOTE}" "${CURRENT_BRANCH}"
+fi

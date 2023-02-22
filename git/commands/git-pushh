@@ -7,11 +7,11 @@ CURRENT_REMOTE=$(git remote -v | awk '{print $1; exit}')
 
 
 help_message() {
-	echo "ppush lets you push to your current working branch\n"
+	echo "pushh lets you push to your current working branch\n"
 	echo "Usage:"
-	echo "\tgit ppush"
-	echo "\tgit ppush --<flags>"
-    echo "\tgit ppush help or git ppush -h"
+	echo "\tgit pushh"
+	echo "\tgit pushh --<flags>"
+    echo "\tgit pushh help or git pushh -h"
 }
 
 branch_info() {

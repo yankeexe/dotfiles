@@ -5,7 +5,7 @@
 -- }
 
 -- Run linter on save
--- vim.cmd [[
+-- vim.cmd [[ 
 -- au BufWritePost * lua require('lint').try_lint()
 -- ]]
 
@@ -13,8 +13,9 @@
 -- View error message when cursor reaches line containing the error
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
-
--- Format on Save
 vim.cmd [[
 au BufWritePost * lua vim.lsp.buf.format()
 ]]
+
+
+

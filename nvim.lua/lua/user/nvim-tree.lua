@@ -1,18 +1,10 @@
 require'nvim-tree'.setup {
   auto_reload_on_write = true,
   create_in_closed_folder = false,
-  disable_netrw = false,
+  disable_netrw = true,
   hijack_cursor = false,
   hijack_netrw = true,
-  hijack_unnamed_buffer_when_opening = false,
-  ignore_buffer_on_setup = false,
-  open_on_setup = false,
-  open_on_setup_file = false,
-  open_on_tab = false,
   sort_by = "name",
-  update_cwd = false,
-  reload_on_bufenter = false,
-  respect_buf_cwd = false,
   view = {
     width = 30,
     hide_root_folder = false,
@@ -88,7 +80,6 @@ require'nvim-tree'.setup {
     update_cwd = false,
     ignore_list = {},
   },
-  ignore_ft_on_setup = {},
   system_open = {
     cmd = "",
     args = {},

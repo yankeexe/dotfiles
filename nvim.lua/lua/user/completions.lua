@@ -54,7 +54,7 @@ cmp.setup {
   },
   mapping = {
     ["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -111,6 +111,9 @@ cmp.setup {
       return vim_item
     end,
   },
+  -- what sources to use for completion :: the order of sources below determines priority
+  -- we can pass the argument `keyword_length` to trigger completion only after typing certain length of work:
+  -- {name = "nvim_lsp", keyword_length=3} :: completion won't be shown from `nvim_lsp` provider unless we type 3 letters
   sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
@@ -130,4 +133,3 @@ cmp.setup {
     native_menu = false,
   },
 }
-

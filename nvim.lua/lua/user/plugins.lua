@@ -35,27 +35,12 @@ return packer.startup(function(use)
   -- Colorschemes
   use 'folke/tokyonight.nvim'
   use "morhetz/gruvbox"
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use {"rebelot/kanagawa.nvim"}
 
-  -- Completion plugins
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-
-  -- Snippet Engine
-  use 'L3MON4D3/LuaSnip'
-
-  -- LSP
+  -- ESSENTIALS
   use {
-    'neovim/nvim-lspconfig',
-    'williamboman/nvim-lsp-installer',
-  }
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-nvim-lua'
-
-  -- Telescope
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
@@ -64,8 +49,36 @@ return packer.startup(function(use)
     run = "<cmd>TSUpdate",
   }
 
-  use "nvim-treesitter/playground"
+  -- Completion plugins
+  use 'hrsh7th/nvim-cmp'     -- core engine for completion
+  use 'hrsh7th/cmp-buffer'   -- completion of words from the current buffer
+  use 'hrsh7th/cmp-path'     -- complete file paths
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-nvim-lsp' -- works with snippets,
+  use 'hrsh7th/cmp-nvim-lua' -- completion for neovim config using lua
 
+  -- Snippet Engine
+  use 'L3MON4D3/LuaSnip'
+
+  -- LSP
+
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+  }
+
+  use {
+    "williamboman/mason-lspconfig.nvim",
+    "wbthomason/packer.nvim", -- Package manager
+    "neovim/nvim-lspconfig",
+  }
+
+
+
+
+  -- use "nvim-treesitter/playground"
+
+  -- barbar = tagline
   use {
     'romgrk/barbar.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' }
@@ -98,9 +111,17 @@ return packer.startup(function(use)
   end
   }
 
-  -- Default ones
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
+  -- Git integrations
+  use { 'f-person/git-blame.nvim' }
+
+use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+}
+
+  -- Default ones
+  use "nvim-lua/popup.nvim"   -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 end)

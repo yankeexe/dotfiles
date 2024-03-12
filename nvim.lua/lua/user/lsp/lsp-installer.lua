@@ -8,6 +8,17 @@ require("mason-lspconfig").setup({
 require("lspconfig").pyright.setup { settings = { python = { analysis = { typeCheckingMode = "off" } } } }
 require("lspconfig").lua_ls.setup { settings = { Lua = { diagnostics = { globals = { "vim" } } } } }
 require("lspconfig").gopls.setup {}
+require("lspconfig").yamlls.setup {
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "workflows.yaml"
+      }
+    }
+  }
+}
+
+require("lspconfig").helm_ls.setup {}
 
 
 
@@ -37,4 +48,5 @@ require("lspconfig").gopls.setup {}
 -- 	-- This setup() function is exactly the same as lspconfig's setup function.
 -- 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- 	server:setup(opts)
+--
 -- end)

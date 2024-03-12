@@ -52,4 +52,5 @@ telescope.load_extension('fzf')
 
 
 
+
 -- CONFIGS FOR BUILTINS

@@ -4,9 +4,11 @@ configs.setup {
   sync_install = false,
   ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
   highlight = {
-    enable = true, -- false will disable the whole extension
+    -- the enabled option should be true but when saving dokcerifle it's causing issues
+    enable = true,    -- false will disable the whole extension
     disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
+    auto_install = true
 
   },
   indent = { enable = true, disable = { "yaml", "python" } },

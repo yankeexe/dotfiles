@@ -12,6 +12,7 @@ require "user.comment"
 require "user.linters"
 require "user.null-ls"
 require "user.lualine"
+require "user.indent-blankline"
 
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -37,10 +38,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<space>f', function()
-      vim.lsp.buf.format { async = true, timeout=3000}
+      vim.lsp.buf.format { async = true, timeout = 3000 }
     end, opts)
   end,
 })
+
+-- Disable inline diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
 
 -- Native LSP setup for Go

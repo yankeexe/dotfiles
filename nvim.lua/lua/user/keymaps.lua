@@ -36,6 +36,10 @@ keymap("n", "<Space><Space>", ":nohlsearch<Bar>:echo<CR>", opts)
 -- Show symbols in the buffer
 keymap("n", "<leader>ss", "<cmd>SymbolsOutline<cr>", opts)
 
+
+-- Order buffer by their number
+keymap("n", "<leader>ob", "<Cmd>BufferOrderByBufferNumber<CR>", opts)
+
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
@@ -61,7 +65,9 @@ keymap("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
 keymap("n", "<leader>d", "<cmd>Telescope diagnostics<CR>")
 keymap("n", "<leader>b", "<cmd>Telescope buffers<CR>")
 keymap("n", "gr", "<cmd>Telescope lsp_references<CR>")
-keymap("n", "<leader>w", "<cmd>Telescope registers<CR>")
+keymap("n", "<leader>r", "<cmd>Telescope registers<CR>")
+keymap("n", "<leader>c", "<cmd>Telescope commands<CR>")
+keymap("n", "<leader>h", "<cmd>Telescope builtin<CR>")
 
 
 -- Terminal keymap

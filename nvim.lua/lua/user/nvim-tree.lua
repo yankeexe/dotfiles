@@ -1,4 +1,4 @@
-require'nvim-tree'.setup {
+require 'nvim-tree'.setup {
   auto_reload_on_write = true,
   create_in_closed_folder = false,
   disable_netrw = true,
@@ -6,19 +6,12 @@ require'nvim-tree'.setup {
   hijack_netrw = true,
   sort_by = "name",
   view = {
-    width = 30,
-    hide_root_folder = false,
-    side = "left",
+    width = 50,
+    side = "right",
     preserve_window_proportions = false,
     number = false,
     relativenumber = false,
     signcolumn = "yes",
-    mappings = {
-      custom_only = false,
-      list = {
-        -- user mappings go here
-      },
-    },
   },
   renderer = {
     add_trailing = false,

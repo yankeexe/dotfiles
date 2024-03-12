@@ -1,127 +1,108 @@
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-   augroup packer_user_config
-     autocmd!
-     autocmd BufWritePost plugins.lua source <afile> | PackerSync
-   augroup end
- ]]
+-- lazy vim start
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+-- lazy vim end
 
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
---if not status_ok then
--- return
--- end
-
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-}
-
-
--- Plugins
--- Info:
--- ft =  Run on these filetypes
--- run = Post clone instructions
--- cmd = lazy loading (run the extension only when you enter those commands)
-return packer.startup(function(use)
-  -- cmd = lazy load plugin, only run when `:MarkdownPreview` is run.
-  use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
-
-  -- Colorschemes
-  use 'folke/tokyonight.nvim'
-  use "morhetz/gruvbox"
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use {"rebelot/kanagawa.nvim"}
-
-  -- ESSENTIALS
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  }
-
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = "<cmd>TSUpdate",
-  }
-
-  -- Completion plugins
-  use 'hrsh7th/nvim-cmp'     -- core engine for completion
-  use 'hrsh7th/cmp-buffer'   -- completion of words from the current buffer
-  use 'hrsh7th/cmp-path'     -- complete file paths
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/cmp-nvim-lsp' -- works with snippets,
-  use 'hrsh7th/cmp-nvim-lua' -- completion for neovim config using lua
-
-  -- Snippet Engine
-  use 'L3MON4D3/LuaSnip'
-
-  -- LSP
-
-  use {
-    "williamboman/mason.nvim",
-    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
-  }
-
-  use {
-    "williamboman/mason-lspconfig.nvim",
-    "wbthomason/packer.nvim", -- Package manager
-    "neovim/nvim-lspconfig",
-  }
-
-
-
-
-  -- use "nvim-treesitter/playground"
-
-  -- barbar = tagline
-  use {
-    'romgrk/barbar.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' }
-  }
-
-  -- File Explorer side bar
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+require("lazy").setup(
+  {
+    { 'iamcco/markdown-preview.nvim', build = 'cd app && yarn install', cmd = 'MarkdownPreview' },
+    -- Colorschemes
+    'folke/tokyonight.nvim',
+    "morhetz/gruvbox",
+    { "catppuccin/nvim",              as = "catppuccin" },
+    { "rebelot/kanagawa.nvim" },
+    -- ESSENTIALS
+    {
+      'nvim-telescope/telescope.nvim',
+      tag = '0.1.4',
+      dependencies = { 'nvim-lua/plenary.nvim' },
     },
-  }
-
-  -- Popup terminal
-  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-    require("toggleterm").setup()
-  end }
-
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
-  }
-
-  use "jose-elias-alvarez/null-ls.nvim"
-  use "windwp/nvim-autopairs"
-  use { 'simrat39/symbols-outline.nvim', config = function()
-    require("symbols-outline").setup()
-  end
-  }
-
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-  -- Git integrations
-  use { 'f-person/git-blame.nvim' }
-
-use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-}
-
-  -- Default ones
-  use "nvim-lua/popup.nvim"   -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
-end)
+    {
+      "nvim-treesitter/nvim-treesitter",
+      build = "<cmd>TSUpdate",
+    },
+    -- Completion plugins
+    'hrsh7th/nvim-cmp',     -- core engine for completion
+    'hrsh7th/cmp-buffer',   -- completion of words from the current buffer
+    'hrsh7th/cmp-path',     -- complete file paths
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/cmp-nvim-lsp', -- works with snippets,
+    'hrsh7th/cmp-nvim-lua', -- completion for neovim config using lua
+    -- Snippet Engine
+    'L3MON4D3/LuaSnip',
+    -- LSP
+    {
+      "williamboman/mason.nvim",
+      build = ":MasonUpdate" -- :MasonUpdate updates registry contents
+    },
+    {
+      "williamboman/mason-lspconfig.nvim",
+      -- "wbthomason/packer.nvim", -- Package manager
+      "neovim/nvim-lspconfig",
+    },
+    {
+      'romgrk/barbar.nvim',
+      dependencies = { 'kyazdani42/nvim-web-devicons' },
+    },
+    -- File Explorer side bar
+    {
+      'kyazdani42/nvim-tree.lua',
+      dependencies = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      },
+    },
+    -- Popup terminal
+    {
+      "akinsho/toggleterm.nvim",
+      tag = '*',
+      config = function()
+        require("toggleterm").setup()
+      end
+    },
+    {
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup()
+      end
+    },
+    "jose-elias-alvarez/null-ls.nvim",
+    "windwp/nvim-autopairs",
+    {
+      'simrat39/symbols-outline.nvim',
+      config = function()
+        require("symbols-outline").setup()
+      end
+    },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    -- Git integrations
+    { 'f-person/git-blame.nvim' },
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+    },
+    "lukas-reineke/indent-blankline.nvim",
+    -- Bookmarks
+    {
+      'otavioschwanck/arrow.nvim',
+      config = function()
+        require('arrow').setup({
+          show_icons = true,
+          leader_key = ';' -- Recommended to be a single key
+        })
+      end
+    },
+    -- Default ones
+    "nvim-lua/popup.nvim",   -- An implementation of the Popup API from vim in Neovim
+    "nvim-lua/plenary.nvim", --  ful lua functions  d by lots of plugins
+  })

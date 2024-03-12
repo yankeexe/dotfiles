@@ -7,6 +7,16 @@ require("toggleterm").setup {
 local Terminal = require("toggleterm.terminal").Terminal
 local python = Terminal:new({ cmd = "bpython", hidden = true })
 
-function _PYTHON_TOGGLE()
- python:toggle()
+function _python_toggle()
+  python:toggle()
 end
+
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>y", "<cmd>lua _python_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+

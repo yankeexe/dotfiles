@@ -23,9 +23,10 @@ require("lazy").setup(
     { "catppuccin/nvim",              as = "catppuccin" },
     { "rebelot/kanagawa.nvim" },
     -- ESSENTIALS
+    { "nvim-tree/nvim-web-devicons" },
     {
       'nvim-telescope/telescope.nvim',
-      tag = '0.1.4',
+      tag = '0.1.6',
       dependencies = { 'nvim-lua/plenary.nvim' },
     },
     {
@@ -65,10 +66,17 @@ require("lazy").setup(
     -- Popup terminal
     {
       "akinsho/toggleterm.nvim",
-      tag = '*',
-      config = function()
-        require("toggleterm").setup()
-      end
+      version = '*',
+      config = true
+    },
+    {
+      "ryanmsnyder/toggleterm-manager.nvim",
+      dependencies = {
+        "akinsho/toggleterm.nvim",
+        "nvim-telescope/telescope.nvim",
+        "nvim-lua/plenary.nvim", -- only needed because it's a dependency of telescope
+      },
+      config = true,
     },
     {
       'numToStr/Comment.nvim',
@@ -98,9 +106,77 @@ require("lazy").setup(
       config = function()
         require('arrow').setup({
           show_icons = true,
-          leader_key = ';' -- Recommended to be a single key
+          leader_key = 'qq' -- Recommended to be a single key
         })
       end
+    },
+    {
+      'stevearc/oil.nvim',
+      opts = { default_file_explorer = true, },
+      -- Optional dependencies
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+    {
+      "j-hui/fidget.nvim",
+      opts = {
+        -- options
+      },
+    },
+    { "folke/neodev.nvim",   opts = {} },
+    {
+      -- Auto formatter
+      'stevearc/conform.nvim',
+      opts = {},
+    },
+    {
+      'folke/which-key.nvim',
+      event = 'VeryLazy',
+      init = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+      end,
+      config = function()
+        require('which-key').setup()
+
+        require('which-key').register {
+          ['<leader>s'] = { name = 'Fuzzy find in current buffer', _ = 'which_key_ignore' },
+          ['<leader>g'] = { name = 'Lazy git', _ = 'which_key_ignore' },
+        }
+      end,
+    },
+    {
+      "folke/todo-comments.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {},
+    },
+    { "SmiteshP/nvim-navic", opts = {}, dependencies = { "neovim/nvim-lspconfig" } },
+    { "MunifTanjim/nui.nvim" },
+    -- Diagnostics
+    {
+      "folke/trouble.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      opts = {},
+    },
+    {
+      "smjonas/inc-rename.nvim",
+      config = function()
+        require("inc_rename").setup()
+      end,
+    },
+    { "sindrets/diffview.nvim" },
+    {
+      "folke/flash.nvim",
+      event = "VeryLazy",
+      ---@type Flash.Config
+      opts = {},
+      -- stylua: ignore
+      keys = {
+        { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+        { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+        { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+        { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+        { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+      },
     },
     -- Default ones
     "nvim-lua/popup.nvim",   -- An implementation of the Popup API from vim in Neovim

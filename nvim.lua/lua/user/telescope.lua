@@ -1,6 +1,5 @@
 local telescope = require("telescope")
 
-
 telescope.setup {
   defaults = {
     layout_config = { width = 0.9 },
@@ -49,8 +48,3 @@ telescope.setup {
 
 -- extension needs to be loaded after setup
 telescope.load_extension('fzf')
-
-
-
-
--- CONFIGS FOR BUILTINS

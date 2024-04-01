@@ -9,23 +9,21 @@ require "user.nvim-tree"
 require "user.toggleterm"
 require "user.telescope"
 require "user.comment"
-require "user.linters"
+require "user.conform"
 require "user.null-ls"
 require "user.lualine"
 require "user.indent-blankline"
 
-
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
+  group = vim.api.nvim_create_augroup('on-lsp-attach', {}),
+  callback = function(event)
     -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    vim.bo[event.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    local opts = { buffer = event.buf }
+    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
@@ -44,8 +42,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Disable inline diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+vim.highlight.on_yank()
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
 -- Native LSP setup for Go
 -- require "lsp.config".gopls.setup{

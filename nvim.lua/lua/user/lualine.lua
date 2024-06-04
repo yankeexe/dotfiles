@@ -1,14 +1,21 @@
 local navic = require("nvim-navic")
+-- local custom_theme = require("lualine.themes.default")
+-- custom_theme.normal.c.bg = "red"
 
-require("lualine").setup {
-  sections = {
-    lualine_c = { { 'filename', path = 2 } },
-    lualine_y = {}
-  }
-
-}
-
-
+require("lualine").setup({
+	sections = {
+		lualine_c = { { "filename", path = 3 } },
+		lualine_y = { "filesize" },
+	},
+	-- winbar = {  -- shows on top of the file
+	-- 	lualine_a = {},
+	-- 	lualine_b = {},
+	-- 	lualine_c = { "buffers" },
+	-- 	lualine_x = {},
+	-- 	lualine_y = {},
+	-- 	lualine_z = {},
+	-- },
+})
 
 -- sections = {
 --   lualine_a = {

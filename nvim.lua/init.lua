@@ -1,56 +1,56 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.completions"
-require "user.lsp"
-require "user.treesitter"
-require "user.nvim-tree"
-require "user.toggleterm"
-require "user.telescope"
-require "user.comment"
-require "user.conform"
-require "user.null-ls"
-require "user.lualine"
-require "user.indent-blankline"
+require("user.options")
+require("user.keymaps")
+require("user.plugins")
+require("user.telescope")
+require("user.colorscheme")
+require("user.completions")
+require("user.lsp")
+require("user.treesitter")
+require("user.nvim-tree")
+require("user.toggleterm")
+require("user.comment")
+require("user.conform")
+require("user.null-ls")
+require("user.lualine")
+require("user.indent-blankline")
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('on-lsp-attach', {}),
-  callback = function(event)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[event.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("on-lsp-attach", {}),
+	callback = function(event)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = event.buf }
-    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<space>f', function()
-      vim.lsp.buf.format { async = true, timeout = 3000 }
-    end, opts)
-  end,
+		-- Buffer local mappings.
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		local opts = { buffer = event.buf }
+		-- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+		-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+		vim.keymap.set("n", "<space>wl", function()
+			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, opts)
+		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<space>f", function()
+			vim.lsp.buf.format({ async = true, timeout = 3000 })
+		end, opts)
+	end,
 })
 
 -- Disable inline diagnostics
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 vim.highlight.on_yank()
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
@@ -69,7 +69,6 @@ vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
 --     -- Show auto fix options for errors under the cursor
 --     vim.keymap.set("n", "<leader>ac", vim.lsp.buf.code_action, {buffer=0})
-
 
 --     -- list diagnostic :: <cmd> = : (colon)
 --     vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostic<cr>", {buffer=0})

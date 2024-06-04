@@ -17,7 +17,6 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 
-
 -- Nvim Tree Lua mappings
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
@@ -28,9 +27,6 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 keymap("n", "<Space><Space>", ":nohlsearch<Bar>:echo<CR>", opts)
-
--- Show symbols in the buffer
-keymap("n", "<leader>so", "<cmd>SymbolsOutline<cr>", opts)
 
 -- Order buffer by their number
 keymap("n", "<leader>ob", "<Cmd>BufferOrderByBufferNumber<CR>", opts)
@@ -68,7 +64,10 @@ keymap("n", "<leader>r", "<cmd>Telescope registers<CR>")
 keymap("n", "<leader>c", "<cmd>Telescope commands<CR>")
 keymap("n", "<leader>h", "<cmd>Telescope builtin<CR>")
 keymap("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>")
-
+keymap("n", "<leader>cpb", "<cmd>:let @+ = expand('%:p')<CR>")
+keymap("n", "<leader>jq", "<cmd>:%!jq .<CR>") -- JQ format current buffer
+keymap("n", "<leader>z", "<cmd>:tab split<CR>") -- z=zoom: full screen for a split buffer as tab
+keymap("n", "<leader>zo", "<cmd>:tabc<CR>") -- zo=zoom-out: close full screen for a split buffer as tab
 
 -- Terminal keymap
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)

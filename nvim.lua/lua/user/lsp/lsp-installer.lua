@@ -16,9 +16,9 @@ require("mason-lspconfig").setup({
 lsp.basedpyright.setup({
 	on_attach = on_attach,
 	settings = {
-		python = {
+		basedpyright = {
 			analysis = {
-				typeCheckingMode = "on",
+				typeCheckingMode = "off",
 				diagnosticMode = "openFilesOnly",
 				useLibraryCodeForTypes = true,
 				autoSearchPaths = true,
@@ -47,3 +47,5 @@ lsp.yamlls.setup({
 })
 
 lsp.helm_ls.setup({})
+lsp.terraformls.setup({})
+lsp.tflint.setup({})

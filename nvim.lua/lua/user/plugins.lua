@@ -253,4 +253,68 @@ require("lazy").setup({
 	-- Default ones
 	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	"nvim-lua/plenary.nvim", --  ful lua functions  d by lots of plugins
+	{
+		"nvim-focus/focus.nvim",
+		version = false,
+		config = function()
+			require("focus").setup()
+		end,
+	},
+	{
+		"piersolenski/telescope-import.nvim",
+		dependencies = "nvim-telescope/telescope.nvim",
+		config = function()
+			require("telescope").load_extension("import")
+		end,
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		opts = {},
+		config = function(_, opts)
+			require("lsp_signature").setup(opts)
+		end,
+	},
+	{
+		"Fildo7525/pretty_hover",
+		event = "LspAttach",
+		opts = {},
+	},
+	{ "nvim-telescope/telescope-ui-select.nvim" }, -- overrides menu items to telescope popup
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup({})
+		end,
+	},
+	{ "mg979/vim-visual-multi" },
+	{
+		"axkirillov/easypick.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+	},
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 		-- add any options here
+	-- 	},
+	-- 	dependencies = {
+	-- 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		-- OPTIONAL:
+	-- 		--   `nvim-notify` is only needed, if you want to use the notification view.
+	-- 		--   If not available, we use `mini` as the fallback
+	-- 		"rcarriga/nvim-notify",
+	-- 	},
+	-- },
 })

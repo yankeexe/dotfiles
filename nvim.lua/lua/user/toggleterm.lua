@@ -1,6 +1,11 @@
 require("toggleterm").setup({
 	open_mapping = [[<leader>t]],
 	direction = "float",
+	float_opts = {
+		border = "double",
+		winblend = 3,
+		title_pos = "center",
+	},
 })
 
 local Terminal = require("toggleterm.terminal").Terminal

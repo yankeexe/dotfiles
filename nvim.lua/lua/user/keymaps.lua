@@ -27,6 +27,7 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 keymap("n", "<Space><Space>", ":nohlsearch<Bar>:echo<CR>", opts)
+-- keymap("n", "<Space><Space>", ":Noice dismiss<CR>", opts)
 
 -- Order buffer by their number
 keymap("n", "<leader>ob", "<Cmd>BufferOrderByBufferNumber<CR>", opts)
@@ -68,6 +69,12 @@ keymap("n", "<leader>cpb", "<cmd>:let @+ = expand('%:p')<CR>")
 keymap("n", "<leader>jq", "<cmd>:%!jq .<CR>") -- JQ format current buffer
 keymap("n", "<leader>z", "<cmd>:tab split<CR>") -- z=zoom: full screen for a split buffer as tab
 keymap("n", "<leader>zo", "<cmd>:tabc<CR>") -- zo=zoom-out: close full screen for a split buffer as tab
+
+-- Gitsigns
+keymap("n", "<leader>gp", "<cmd>:tabc<CR>") -- zo=zoom-out: close full screen for a split buffer as tab
+
+-- Toggleterm
+keymap("n", "<leader>ot", "<cmd>:TermSelect<CR>")
 
 -- Terminal keymap
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)

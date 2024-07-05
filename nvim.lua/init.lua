@@ -13,6 +13,7 @@ require("user.conform")
 require("user.null-ls")
 require("user.lualine")
 require("user.indent-blankline")
+require("user.easypick")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("on-lsp-attach", {}),

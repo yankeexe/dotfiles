@@ -198,7 +198,7 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			require("octo").setup()
+			require("octo").setup({ enable_builtin = true })
 		end,
 	},
 
@@ -302,6 +302,14 @@ require("lazy").setup({
 		"axkirillov/easypick.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
 	},
+	{ "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
+	-- {
+	-- 	"OXY2DEV/markview.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"nvim-tree/nvim-web-devicons",
+	-- 	},
+	-- },
 	-- {
 	-- 	"folke/noice.nvim",
 	-- 	event = "VeryLazy",

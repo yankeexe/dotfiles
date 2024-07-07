@@ -9,7 +9,15 @@ require("toggleterm").setup({
 })
 
 local Terminal = require("toggleterm.terminal").Terminal
-local python = Terminal:new({ cmd = "bpython", hidden = true })
+local python = Terminal:new({
+	cmd = "bpython",
+	hidden = true,
+	close_on_exit = true,
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<leader>y", "<cmd>close<CR>", { noremap = true, silent = true })
+	end,
+})
 
 function _python_toggle()
 	python:toggle()

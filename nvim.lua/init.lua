@@ -37,6 +37,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
 		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 		vim.keymap.set("n", "<space>f", function()
 			vim.lsp.buf.format({ async = true, timeout = 3000 })
 		end, opts)
@@ -45,6 +46,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Disable inline diagnostics
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+
 vim.highlight.on_yank()
 
 vim.api.nvim_create_autocmd("TextYankPost", {

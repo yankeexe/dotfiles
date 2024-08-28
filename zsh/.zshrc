@@ -97,7 +97,6 @@ function lat() {
 }
 
 # 🐍 PYTHON-specific
-
 # Create virtual env with set python version and base directory name
 # Usage: vm 8 for python 3.8 or vim 12 for python 3.12
 # Default version is 3.11

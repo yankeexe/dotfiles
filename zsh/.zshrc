@@ -95,3 +95,11 @@ lazynvm() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+## Configuration for the `less` command
+# N -> show line numbers
+# i -> disable case sensitivity on search
+export LESS="-Ni" 
+
+# Use neovim for opening man pages 
+export MANPAGER='nvim +Man!'
+

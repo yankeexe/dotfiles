@@ -1,0 +1,11 @@
+autochdir
+cursorcolumn
+listchars
+listchars
+eol
+relativenumber
+fav
+Args
+str
+function
+toggleterm

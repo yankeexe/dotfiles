@@ -96,27 +96,43 @@ function lat() {
   curl cheat.sh/latencies
 }
 
+check_breakpoint() {
+    if grep -rnw --exclude-dir={env,venv} --include='*.py' -e "breakpoint()"; then
+        echo "❌ Breakpoints found in code."
+    fi
+
 # 🐍 PYTHON-specific
 # Create virtual env with set python version and base directory name
 # Usage: vm 8 for python 3.8 or vim 12 for python 3.12
 # Default version is 3.11
 vm() {
-  base_name=$(basename "$PWD")
-  python3.${1:-11} -m venv ~/.venvs/"$base_name"
+    base_name=$(basename "$PWD")
+    python3.${1:-11} -m venv ~/.venvs/"$base_name"
 }
 
-# Activate virtualenv based on the project directory name
+
 va() {
-  base_name=$(basename "$PWD")
-  source ~/.venvs/"$base_name"/bin/activate
+    if [ -d ".venv" ]; then
+        echo "using virtualenv at .venv"
+        source .venv/bin/activate
+    elif [ -d "venv" ]; then
+        echo "using virtualenv at venv"
+        source venv/bin/activate
+    else
+        base_name=$(basename "$PWD")
+        source ~/.venvs/"$base_name"/bin/activate
+    fi
 }
 
-# Delete virtualenv based on the project directory name
 vrm(){
     base_name=$(basename "$PWD")
-    path="~/.venvs/$base_name"
-    rm -rf "$path"
-    echo "Deleted $path"
+    venv_path="~/.venvs/$base_name"
+    rm -rf "$venv_path"
+    echo "Deleted $venv_path"
+}
+
+rvd(){
+  python3 ~/.scripts/delete-venv.py
 }
 
 # GLOBAL ALIASES

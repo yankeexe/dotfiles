@@ -22,34 +22,12 @@ keymap("n", "<ESC><ESC>", ":nohlsearch<Bar>:echo<CR>", { desc = "Remove highligh
 keymap("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Neotree" })
 
 -- Telescope mappings
-local telescope_smart = require("config.telescope_resume").smart_telescope
-
-keymap("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Neotree" })
-keymap("n", "<leader><leader>", function()
-    telescope_smart("fd")
-end, { desc = "Find files" })
-keymap("n", "<leader>b", function()
-    telescope_smart("buffers")
-end, { desc = "Select buffer" })
-keymap("n", "<leader>f", function()
-    telescope_smart("current_buffer_fuzzy_find")
-end, { desc = "Search in current buffer" })
-keymap("n", "<leader>F", function()
-    telescope_smart("live_grep")
-end, { desc = "Whole project search" })
-keymap("n", "<leader>h", function()
-    telescope_smart("help_tags")
-end, { desc = "Search Help tags" })
-keymap("n", ";T", function()
-    telescope_smart("toggleterm")
-end, { desc = "Search terminals" })
-
--- keymap("n", "<leader><leader>", ":Telescope fd<CR>", { desc = "Find files" })
--- keymap("n", "<leader>b", ":Telescope buffers<CR>", { desc = "Select buffer" })
--- keymap("n", "<leader>f", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Search in current buffer" })
--- keymap("n", "<leader>F", ":Telescope live_grep<CR>", { desc = "Whole project search" })
--- keymap("n", "<leader>h", ":Telescope help_tags<CR>", { desc = "Search Help tags" })
--- keymap("n", ";T", ":Telescope toggleterm<CR>", { desc = "Search Help tags" })
+keymap("n", "<leader><leader>", ":Telescope fd<CR>", { desc = "Find files" })
+keymap("n", "<leader>b", ":Telescope buffers<CR>", { desc = "Select buffer" })
+keymap("n", "<leader>f", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Search in current buffer" })
+keymap("n", "<leader>F", ":Telescope live_grep<CR>", { desc = "Whole project search" })
+keymap("n", "<leader>h", ":Telescope help_tags<CR>", { desc = "Search Help tags" })
+keymap("n", ";T", ":Telescope toggleterm<CR>", { desc = "Search Help tags" })
 
 -- Window Navigation
 -- keymap("n", "<C-h>", "<C-w>h")

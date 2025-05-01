@@ -22,3 +22,11 @@ vim.api.nvim_create_autocmd("TermEnter", {
         vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = true })
     end,
 })
+
+-- Disable automatic comment continuation
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        vim.opt.formatoptions:remove({ "r", "o" })
+    end,
+})

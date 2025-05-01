@@ -33,6 +33,17 @@ return {
         },
     },
     {
+        "mfussenegger/nvim-dap-python",
+        ft = "python",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+        },
+        config = function()
+            local path = "/Users/yankeemaharjan/.venvs/nvim/bin/python"
+            require("dap-python").setup(path)
+        end,
+    },
+    {
         "wurli/contextindent.nvim",
         -- This is the only config option; you can use it to restrict the files
         -- which this plugin will affect (see :help autocommand-pattern).
@@ -84,11 +95,11 @@ return {
             "TmuxNavigatePrevious",
         },
         keys = {
-            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+            { "<C-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Navigate Left" },
+            { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Navigate Down" },
+            { "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Navigate Up" },
+            { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Navigate Right" },
+            { "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Navigate Previous" },
         },
     },
     { "akinsho/toggleterm.nvim", version = "*", config = true },

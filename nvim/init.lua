@@ -20,6 +20,7 @@ require("config.bufferline")
 require("config.folding")
 require("config.trouble")
 
+vim.g.snacks_animate = false
 -- Basic configurations
 vim.cmd.colorscheme("catppuccin-mocha")
 

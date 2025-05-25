@@ -30,10 +30,10 @@ keymap("n", "<leader>h", ":Telescope help_tags<CR>", { desc = "Search Help tags"
 keymap("n", ";T", ":Telescope toggleterm<CR>", { desc = "Search Help tags" })
 
 -- Window Navigation
--- keymap("n", "<C-h>", "<C-w>h")
--- keymap("n", "<C-l>", "<C-w>l")
--- keymap("n", "<C-j>", "<C-w>j")
--- keymap("n", "<C-k>", "<C-w>k")
+keymap("n", "<C-h>", "<C-w>h")
+keymap("n", "<C-l>", "<C-w>l")
+keymap("n", "<C-j>", "<C-w>j")
+keymap("n", "<C-k>", "<C-w>k")
 
 -- Git
 -- Lazygit
@@ -112,9 +112,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
         vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
         vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-        vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+        vim.keymap.set(
+            "n",
+            "gr",
+            "<cmd>Telescope lsp_references<CR>",
+            { desc = "Go to references", noremap = true, silent = true }
+        )
         vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-        vim.keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+        vim.keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Symbol", buffer = event.buf })
         vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
         vim.keymap.set("n", "<leader>gc", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     end,

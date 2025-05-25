@@ -85,23 +85,6 @@ return {
         cmd = "Trouble",
     },
     { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-    {
-        "christoomey/vim-tmux-navigator",
-        cmd = {
-            "TmuxNavigateLeft",
-            "TmuxNavigateDown",
-            "TmuxNavigateUp",
-            "TmuxNavigateRight",
-            "TmuxNavigatePrevious",
-        },
-        keys = {
-            { "<C-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Navigate Left" },
-            { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Navigate Down" },
-            { "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Navigate Up" },
-            { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Navigate Right" },
-            { "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Navigate Previous" },
-        },
-    },
     { "akinsho/toggleterm.nvim", version = "*", config = true },
     {
         "windwp/nvim-autopairs",
@@ -160,6 +143,7 @@ return {
     {
         "folke/snacks.nvim",
         opts = {
+            animate = {},
             lazygit = {},
             scratch = {},
             terminal = {},
@@ -206,6 +190,7 @@ return {
         tag = "0.1.8",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
+    { "nvim-telescope/telescope-ui-select.nvim" },
     {
         "rachartier/tiny-inline-diagnostic.nvim",
         event = "VeryLazy", -- Or `LspAttach`

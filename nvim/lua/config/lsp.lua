@@ -5,7 +5,7 @@ require("mason-lspconfig").setup()
 require("lspconfig").lua_ls.setup({})
 
 -- Python LSP configuration
-require("lspconfig").basedpyright.setup({
+vim.lsp.config("basedpyright", {
     settings = {
         basedpyright = {
             analysis = {
@@ -15,10 +15,10 @@ require("lspconfig").basedpyright.setup({
     },
 })
 
-require("lspconfig").docker_compose_language_service.setup({})
-require("lspconfig").dockerls.setup({})
-require("lspconfig").gopls.setup({})
-
+-- require("lspconfig").docker_compose_language_service.setup({})
+-- require("lspconfig").dockerls.setup({})
+-- require("lspconfig").gopls.setup({})
+--
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = "yes"

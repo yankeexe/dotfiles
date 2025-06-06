@@ -1,8 +1,7 @@
-local sections = require("lazy.view.sections")
 return {
     -- Git plugins
+    { "github/copilot.vim" },
     { "sindrets/diffview.nvim" },
-
     { "tpope/vim-fugitive" },
     {
         "f-person/git-blame.nvim",
@@ -204,8 +203,14 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     -- LSP Plugins
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
     {
         "neovim/nvim-lspconfig",
         dependencies = {

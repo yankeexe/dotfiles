@@ -15,7 +15,7 @@ require("codecompanion").setup({
                 name = "ollama_local",
                 schema = {
                     model = {
-                        default = "qwen3:8b",
+                        default = "llama3.2:3b",
                     },
                     num_ctx = {
                         default = 16384,

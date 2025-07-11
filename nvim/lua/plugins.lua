@@ -1,6 +1,6 @@
 return {
     -- Git plugins
-    { "github/copilot.vim" },
+    -- { "github/copilot.vim" },
     { "sindrets/diffview.nvim" },
     { "tpope/vim-fugitive" },
     {

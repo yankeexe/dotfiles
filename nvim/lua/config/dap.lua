@@ -15,17 +15,17 @@ return {
                         { id = "watches", size = 0.25 },
                     },
                     position = "left",
-                    size = 40
+                    size = 40,
                 },
                 {
                     elements = {
                         { id = "repl", size = 0.5 },
-                        { id = "console", size = 0.5 }
+                        { id = "console", size = 0.5 },
                     },
                     position = "bottom",
-                    size = 10
-                }
-            }
+                    size = 10,
+                },
+            },
         })
 
         -- Define the Python path
@@ -54,6 +54,7 @@ return {
             },
         })
         require("dap-python").test_runner = "pytest"
+        require("dap-go").setup({})
 
         -- Define launch configurations (no need to redefine the adapter)
         dap.configurations.python = {
@@ -75,6 +76,6 @@ return {
         dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
         -- Add keymaps for manually toggling the UI
-        vim.keymap.set('n', '<leader>du', dapui.toggle, { desc = 'Toggle Debug UI' })
+        vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle Debug UI" })
     end,
 }

@@ -2,32 +2,40 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap.set
+local function set_keymap(mode, lhs, rhs, description)
+    local opts = { silent = true, noremap = true }
+    if description then
+        opts.desc = description
+    end
+    vim.keymap.set(mode, lhs, rhs, opts)
+end
 
 -- use <jk> as esc.
-keymap("i", "jk", "<ESC>")
+set_keymap("i", "jk", "<ESC>", "Normal Mode")
 
 -- folding
-vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+set_keymap("n", "zR", require("ufo").openAllFolds, "Open all folds")
+set_keymap("n", "zM", require("ufo").closeAllFolds, "Close all folds")
 
 -- Buffer navigation
-keymap("n", "<S-l>", ":bnext<CR>", { desc = "Buffer Next" })
-keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Buffer Previous" })
+set_keymap("n", "<S-l>", ":bnext<CR>", "Buffer Next")
+set_keymap("n", "<S-h>", ":bprevious<CR>", "Buffer Previous")
+set_keymap("n", "<leader>a", "<cmd>BufferLinePick<CR>", "Pick buffer by hotkey")
 
 -- UndoTree
-keymap("n", "<leader>ut", ":UndotreeToggle<cr>", { desc = "UndoTree Toggle" })
+set_keymap("n", "<leader>ut", ":UndotreeToggle<cr>", "UndoTree Toggle")
 
-keymap("n", "<ESC><ESC>", ":nohlsearch<Bar>:echo<CR>", { desc = "Remove highlights" })
+set_keymap("n", "<ESC><ESC>", ":nohlsearch<Bar>:echo<CR>", "Remove highlights")
+set_keymap("n", "<leader>e", ":Neotree reveal<CR>", "Neotree")
 
-keymap("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Neotree" })
-
--- Telescope mappings
-keymap("n", "<leader><leader>", ":Telescope fd<CR>", { desc = "Find files" })
-keymap("n", "<leader>b", ":Telescope buffers<CR>", { desc = "Select buffer" })
-keymap("n", "<leader>f", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Search in current buffer" })
-keymap("n", "<leader>F", ":Telescope live_grep<CR>", { desc = "Whole project search" })
-keymap("n", "<leader>h", ":Telescope help_tags<CR>", { desc = "Search Help tags" })
-keymap("n", ";T", ":Telescope toggleterm<CR>", { desc = "Search Help tags" })
+-- Pickers
+set_keymap("n", "<leader><leader>", ":lua Snacks.picker.files()<CR>", "Find files")
+set_keymap("n", "<leader>m", ":lua Snacks.picker.marks()<CR>", "Select Marks")
+set_keymap("n", "<leader>b", ":lua Snacks.picker.buffers()<CR>", "Select buffer")
+set_keymap("n", "<leader>f", ":Telescope current_buffer_fuzzy_find<CR>", "Search in current buffer")
+set_keymap("n", "<leader>F", ":lua Snacks.picker.grep()<CR>", "Whole project search")
+set_keymap("n", "<leader>h", ":Telescope help_tags<CR>", "Search Help tags")
+set_keymap("n", ";T", ":Telescope toggleterm<CR>", "Search Help tags")
 
 -- Window Navigation
 keymap("n", "<C-h>", "<C-w>h")
@@ -37,36 +45,31 @@ keymap("n", "<C-k>", "<C-w>k")
 
 -- Git
 -- Lazygit
-keymap("n", "<leader>lg", "<cmd>lua Snacks.lazygit.open()<cr>", { desc = "Lazygit" })
+set_keymap("n", "<leader>lg", "<cmd>lua Snacks.lazygit.open()<cr>", "Lazygit")
 
-keymap("n", "<leader>sp", "<cmd>lua Snacks.scratch.open()<cr>", { desc = "Scratchpad" })
-keymap("n", "<leader>sl", "<cmd>lua Snacks.scratch.list()<cr>", { desc = "Scratchpad list" })
-keymap("n", "<leader>j", "<cmd>lua Snacks.terminal.toggle()<cr>", { desc = "Terminal toggle" })
-keymap("n", "<leader>kk", "<cmd>lua Snacks.picker.keymaps()<cr>", { desc = "Terminal toggle" })
-keymap(
+set_keymap("n", "<leader>sp", "<cmd>lua Snacks.scratch.open()<cr>", "Scratchpad")
+set_keymap("n", "<leader>sl", "<cmd>lua Snacks.scratch.list()<cr>", "Scratchpad list")
+set_keymap("n", "<leader>j", "<cmd>lua Snacks.terminal.toggle()<cr>", "Terminal toggle")
+set_keymap("n", "<leader>kk", "<cmd>lua Snacks.picker.keymaps()<cr>", "Terminal toggle")
+set_keymap(
     "n",
     "<leader>ss",
     "<cmd>lua Snacks.picker.lsp_symbols({layout = {preset = 'vscode', preview = 'main'}})<cr>",
-    { desc = "LSP Symbols" }
+    "LSP Symbols"
 )
 
 -- Code companion
-keymap("n", "<leader>cc", ":CodeCompanionChat Toggle<cr>", { desc = "Toggle AI Chat window" })
-keymap("n", "<leader>ca", ":CodeCompanionActions<cr>", { desc = "AI Actions" })
-keymap("v", "<leader>ci", ":CodeCompanionChat Add<cr>", { desc = "Insert visually selected code to chat window" })
+set_keymap("n", "<leader>cc", ":CodeCompanionChat Toggle<cr>", "Toggle AI Chat window")
+set_keymap("n", "<leader>ca", ":CodeCompanionActions<cr>", "AI Actions")
+set_keymap("v", "<leader>ci", ":CodeCompanionChat Add<cr>", "Insert visually selected code to chat window")
 
 -- Trouble.nvim
-keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
-keymap("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
-keymap("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=true<cr>", { desc = "Symbols (Trouble)" })
-keymap(
-    "n",
-    "<leader>cl",
-    "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-    { desc = "LSP Definitions / references / ... (Trouble)" }
-)
-keymap("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
-keymap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
+set_keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", "Diagnostics (Trouble)")
+set_keymap("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics (Trouble)")
+set_keymap("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=true<cr>", "Symbols (Trouble)")
+set_keymap("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", "Trouble LSP toggle")
+set_keymap("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", "Location List (Trouble)")
+set_keymap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", "Quickfix List (Trouble)")
 
 -- DAP keymap
 local dap = require("dap")
@@ -115,7 +118,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set(
             "n",
             "gr",
-            "<cmd>Telescope lsp_references<CR>",
+            "<cmd>lua Snacks.picker.lsp_references()<CR>",
             { desc = "Go to references", noremap = true, silent = true }
         )
         vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)

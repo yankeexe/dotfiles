@@ -11,6 +11,7 @@ require("conform").formatters.stylua = {
 
 require("conform").setup({
     formatters_by_ft = {
+        yaml = { "yq" },
         lua = { "stylua" },
         bash = { "shfmt" },
         -- Conform will run multiple formatters sequentially

@@ -61,3 +61,14 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt.formatoptions:remove({ "r", "o" })
     end,
 })
+
+-- Set space indentation settings for YAML files
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "yaml",
+    callback = function()
+        vim.bo.expandtab = true -- Convert tabs to spaces
+        vim.bo.shiftwidth = 2 -- Number of spaces for each indent
+        vim.bo.softtabstop = 2 -- Number of spaces tabs count for
+        vim.bo.tabstop = 2 -- Number of spaces for a tab
+    end,
+})

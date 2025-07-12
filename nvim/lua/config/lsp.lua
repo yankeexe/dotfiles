@@ -1,4 +1,5 @@
 -- :h lspconfig-all
+
 require("mason").setup()
 require("mason-lspconfig").setup()
 
@@ -9,7 +10,10 @@ vim.lsp.config("basedpyright", {
     settings = {
         basedpyright = {
             analysis = {
-                typeCheckingMode = "off",
+                typeCheckingMode = "basic",
+                exclude = { ".venv", "venv" },
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = true,
             },
         },
     },

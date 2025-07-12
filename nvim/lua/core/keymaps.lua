@@ -21,6 +21,7 @@ set_keymap("n", "zM", require("ufo").closeAllFolds, "Close all folds")
 set_keymap("n", "<S-l>", ":bnext<CR>", "Buffer Next")
 set_keymap("n", "<S-h>", ":bprevious<CR>", "Buffer Previous")
 set_keymap("n", "<leader>a", "<cmd>BufferLinePick<CR>", "Pick buffer by hotkey")
+set_keymap("n", ";w", ":w<CR>", "Save buffer")
 
 -- UndoTree
 set_keymap("n", "<leader>ut", ":UndotreeToggle<cr>", "UndoTree Toggle")
@@ -43,6 +44,10 @@ keymap("n", "<C-l>", "<C-w>l")
 keymap("n", "<C-j>", "<C-w>j")
 keymap("n", "<C-k>", "<C-w>k")
 
+-- Quickfix nav
+set_keymap("n", "<C-n>", "<cmd>cnext<CR>", "Quickfix: cnext")
+set_keymap("n", "<C-p>", "<cmd>cprev<CR>", "Quickfix: cprev")
+
 -- Git
 -- Lazygit
 set_keymap("n", "<leader>lg", "<cmd>lua Snacks.lazygit.open()<cr>", "Lazygit")
@@ -50,7 +55,7 @@ set_keymap("n", "<leader>lg", "<cmd>lua Snacks.lazygit.open()<cr>", "Lazygit")
 set_keymap("n", "<leader>sp", "<cmd>lua Snacks.scratch.open()<cr>", "Scratchpad")
 set_keymap("n", "<leader>sl", "<cmd>lua Snacks.scratch.list()<cr>", "Scratchpad list")
 set_keymap("n", "<leader>j", "<cmd>lua Snacks.terminal.toggle()<cr>", "Terminal toggle")
-set_keymap("n", "<leader>kk", "<cmd>lua Snacks.picker.keymaps()<cr>", "Terminal toggle")
+set_keymap("n", "<leader>kk", "<cmd>lua Snacks.picker.keymaps()<cr>", "Show keymaps")
 set_keymap(
     "n",
     "<leader>ss",
@@ -69,7 +74,7 @@ set_keymap("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>"
 set_keymap("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=true<cr>", "Symbols (Trouble)")
 set_keymap("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", "Trouble LSP toggle")
 set_keymap("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", "Location List (Trouble)")
-set_keymap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", "Quickfix List (Trouble)")
+set_keymap("n", ";q", "<cmd>Trouble qflist toggle<cr>", "Quickfix List (Trouble)")
 
 -- DAP keymap
 local dap = require("dap")
@@ -115,6 +120,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
         vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
         vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+        vim.keymap.set("n", "<Leader>r", "<cmd>lua Snacks.picker.resume()<cr>", opts)
+        -- vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
         vim.keymap.set(
             "n",
             "gr",

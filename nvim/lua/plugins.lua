@@ -1,21 +1,14 @@
 return {
     -- Git plugins
     -- { "github/copilot.vim" },
-    { "sindrets/diffview.nvim" },
+    { "sindrets/diffview.nvim", event = "VeryLazy" },
     { "tpope/vim-fugitive" },
     {
         "f-person/git-blame.nvim",
-        -- load the plugin at startup
         event = "VeryLazy",
-        -- Because of the keys part, you will be lazy loading this plugin.
-        -- The plugin wil only load once one of the keys is used.
-        -- If you want to load the plugin at startup, add something like event = "VeryLazy",
-        -- or lazy = false. One of both options will work.
         opts = {
-            -- your configuration comes here
-            -- for example
-            enabled = true, -- if you want to enable the plugin
-            message_template = " <author> • <summary> • <date> • <<sha>>", -- template for the blame message, check the Message template section for more options
+            enabled = true,
+            message_template = " <author> • <summary> • <date>", -- template for the blame message, check the Message template section for more options
             date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
             virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
         },
@@ -49,7 +42,7 @@ return {
         opts = { pattern = "*" },
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
-    "mbbill/undotree",
+    { "mbbill/undotree" },
     { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
     {
         "folke/flash.nvim",
@@ -77,17 +70,19 @@ return {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
+        event = "VeryLazy",
     },
     {
         "folke/trouble.nvim",
         opts = {},
         cmd = "Trouble",
+        event = "VeryLazy",
     },
-    { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-    { "akinsho/toggleterm.nvim", version = "*", config = true },
+    { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
+    { "akinsho/toggleterm.nvim", version = "*", config = true, event = "VeryLazy" },
     {
         "windwp/nvim-autopairs",
-        event = "InsertEnter",
+        event = "VeryLazy",
         config = true,
         -- use opts = {} for passing setup options
         -- this is equivalent to setup({}) function
@@ -106,17 +101,11 @@ return {
             },
         },
     },
-    -- {
-    --     "lukas-reineke/indent-blankline.nvim",
-    --     main = "ibl",
-    --     ---@module "ibl"
-    --     ---@type ibl.config
-    --     opts = {},
-    -- },
     { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
     {
         "olimorris/codecompanion.nvim",
         config = true,
+        event = "VeryLazy",
     },
     {
         "folke/edgy.nvim",
@@ -178,9 +167,8 @@ return {
         branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         },
     },
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
@@ -201,6 +189,7 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        event = "VeryLazy",
     },
     -- LSP Plugins
     {

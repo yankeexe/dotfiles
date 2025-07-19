@@ -226,4 +226,5 @@ return {
             },
         },
     },
+    { "nvimdev/lspsaga.nvim" },
 }

@@ -21,7 +21,7 @@ vim.lsp.config("basedpyright", {
 
 -- require("lspconfig").docker_compose_language_service.setup({})
 -- require("lspconfig").dockerls.setup({})
--- require("lspconfig").gopls.setup({})
+require("lspconfig").gopls.setup({})
 --
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
@@ -32,3 +32,10 @@ vim.opt.signcolumn = "yes"
 local lspconfig_defaults = require("lspconfig").util.default_config
 lspconfig_defaults.capabilities =
     vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+require("lspsaga").setup({
+    symbol_in_winbar = {
+        folder_level = 0,
+        show_file = false,
+    },
+})

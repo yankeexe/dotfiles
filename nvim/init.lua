@@ -16,7 +16,7 @@ require("config.codecompanion")
 -- require("config.ibl")
 require("config.toggleterm")
 require("config.telescope")
-require("config.bufferline")
+-- require("config.bufferline")
 require("config.folding")
 require("config.trouble")
 

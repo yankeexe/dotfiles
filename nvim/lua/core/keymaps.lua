@@ -63,6 +63,12 @@ set_keymap(
     "LSP Symbols"
 )
 
+-- Neotest
+set_keymap("n", "<leader>tt", ":lua require('neotest').summary.toggle()<CR>", "Neotest toggle")
+set_keymap("n", "<leader>tr", ":lua require('neotest').run.run()<CR>", "Neotest run")
+set_keymap("n", "<leader>to", ":  lua require('neotest').output_panel.toggle()<CR>", "Neotest output panel")
+set_keymap("n", "<leader>toc", ":  lua require('neotest').output_panel.clear()<CR>", "Neotest clear output panel")
+
 -- Code companion
 set_keymap("n", "<leader>cc", ":CodeCompanionChat Toggle<cr>", "Toggle AI Chat window")
 set_keymap("n", "<leader>ca", ":CodeCompanionActions<cr>", "AI Actions")

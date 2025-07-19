@@ -19,6 +19,7 @@ require("config.telescope")
 -- require("config.bufferline")
 require("config.folding")
 require("config.trouble")
+require("config.neotest")
 
 vim.g.snacks_animate = false
 -- Basic configurations

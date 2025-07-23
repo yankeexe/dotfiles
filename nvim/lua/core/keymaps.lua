@@ -20,7 +20,6 @@ set_keymap("n", "zM", require("ufo").closeAllFolds, "Close all folds")
 -- Buffer navigation
 set_keymap("n", "<S-l>", ":bnext<CR>", "Buffer Next")
 set_keymap("n", "<S-h>", ":bprevious<CR>", "Buffer Previous")
-set_keymap("n", "<leader>a", "<cmd>BufferLinePick<CR>", "Pick buffer by hotkey")
 set_keymap("n", ";w", ":w<CR>", "Save buffer")
 
 -- UndoTree
@@ -30,11 +29,11 @@ set_keymap("n", "<ESC><ESC>", ":nohlsearch<Bar>:echo<CR>", "Remove highlights")
 set_keymap("n", "<leader>e", ":Neotree reveal<CR>", "Neotree")
 
 -- Pickers
-set_keymap("n", "<leader><leader>", ":lua Snacks.picker.files()<CR>", "Find files")
-set_keymap("n", "<leader>m", ":lua Snacks.picker.marks()<CR>", "Select Marks")
-set_keymap("n", "<leader>b", ":lua Snacks.picker.buffers()<CR>", "Select buffer")
+set_keymap("n", "<leader><leader>", ":Telescope find_files<CR>", "Find files")
+set_keymap("n", "<leader>m", ":Telescope marks<CR>", "Select Marks")
+set_keymap("n", "<leader>b", ":Telescope buffers<CR>", "Select buffer")
 set_keymap("n", "<leader>f", ":Telescope current_buffer_fuzzy_find<CR>", "Search in current buffer")
-set_keymap("n", "<leader>F", ":lua Snacks.picker.grep()<CR>", "Whole project search")
+set_keymap("n", "<leader>F", ":Telescope live_grep<CR>", "Whole project search")
 set_keymap("n", "<leader>h", ":Telescope help_tags<CR>", "Search Help tags")
 set_keymap("n", ";T", ":Telescope toggleterm<CR>", "Search Help tags")
 
@@ -127,11 +126,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
         vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
         vim.keymap.set("n", "<Leader>r", "<cmd>lua Snacks.picker.resume()<cr>", opts)
-        -- vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
         vim.keymap.set(
             "n",
             "gr",
-            "<cmd>lua Snacks.picker.lsp_references()<CR>",
+            "<cmd>Telescope lsp_references<CR>",
             { desc = "Go to references", noremap = true, silent = true }
         )
         vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)

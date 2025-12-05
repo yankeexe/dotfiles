@@ -10,22 +10,24 @@ require("codecompanion").setup({
 
     -- model configuration for providers
     adapters = {
-        ollama_local = function()
-            return adapters.extend("ollama", {
-                name = "ollama_local",
-                schema = {
-                    model = {
-                        default = "llama3.2:3b",
+        http = {
+            ollama_local = function()
+                return adapters.extend("ollama", {
+                    name = "ollama_local",
+                    schema = {
+                        model = {
+                            default = "llama3.2:3b",
+                        },
+                        num_ctx = {
+                            default = 16384,
+                        },
+                        num_predict = {
+                            default = -1,
+                        },
                     },
-                    num_ctx = {
-                        default = 16384,
-                    },
-                    num_predict = {
-                        default = -1,
-                    },
-                },
-            })
-        end,
+                })
+            end,
+        },
     },
 
     -- default providers to use

@@ -120,7 +120,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
         local opts = { buffer = event.buf }
 
-        vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+        vim.keymap.set("n", "K", "<cmd>Lspsaga peek_definition<cr>", opts)
         vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
         vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
         vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
@@ -129,12 +129,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set(
             "n",
             "gr",
-            "<cmd>Telescope lsp_references<CR>",
+            "<cmd>Lspsaga finder<CR>",
             { desc = "Go to references", noremap = true, silent = true }
         )
         vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
         vim.keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Symbol", buffer = event.buf })
         vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-        vim.keymap.set("n", "<leader>gc", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+        -- vim.keymap.set("n", "<leader>gc", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+        vim.keymap.set("n", "<leader>gc", "<cmd>Lspsaga code_action<cr>", opts)
     end,
 })

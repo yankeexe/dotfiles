@@ -166,7 +166,12 @@ return {
             },
         },
     },
-    "nvim-treesitter/nvim-treesitter",
+    {
+        "nvim-treesitter/nvim-treesitter",
+        branch = "main",
+        build = ":TSUpdate",
+        lazy = false,
+    },
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
@@ -179,7 +184,7 @@ return {
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.8",
+        branch = "master",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
     { "nvim-telescope/telescope-ui-select.nvim" },
